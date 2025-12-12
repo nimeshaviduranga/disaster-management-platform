@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Incidents collection - SOS reports
+    match /incidents/{incidentId} {
+      // Anyone authenticated (including anonymous) can create incidents
+      allow create: if request.auth != null 
+                    && request.resource.data.userId == request.auth.uid
+                    && request.resource.data.keys().hasAll(['name', 'phone', 'type', 'description', 'status', 'timestamp']);
+      
+      // Anyone can read incidents (public dashboard)
+      allow read: if true;
+      
+      // Only admins or the creator can update
+      // For MVP, allow any authenticated user to update status
+      allow update: if request.auth != null;
+      
+      // Allow authenticated non-anonymous users to delete (admins)
+      allow delete: if request.auth != null 
+                    && request.auth.token.firebase.sign_in_provider != 'anonymous';
+    }
+    
+    // Alerts collection - Weather/Predictive alerts
+    match /alerts/{alertId} {
+      // Anyone can read alerts
+      allow read: if true;
+      
+      // Only authenticated users can create alerts
+      allow create: if request.auth != null;
+      
+      // No updates or deletes for alerts
+      allow update, delete: if false;
+    }
+  }
+}
