@@ -1,4 +1,4 @@
-# 🆘 RescueHQ - Disaster Management Platform
+#  RescueHQ - Disaster Management Platform
 
 <p align="center">
   <img src="docs/app-icon.png" alt="RescueHQ Logo" width="120" />
@@ -8,6 +8,18 @@
   <strong>A real-time disaster management and emergency response platform for Sri Lanka</strong>
 </p>
 
+<p align="center">
+  <a href="https://disaster-managment-platform.web.app">🌐 Live Demo</a> •
+  <a href="#features">Features</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#setup">Setup</a>
+</p>
+
+<p align="center">
+  <a href="https://disaster-managment-platform.web.app">
+    <img src="https://img.shields.io/badge/demo-live-brightgreen?style=for-the-badge" alt="Live Demo" />
+  </a>
+</p>
 
 ---
 
@@ -78,7 +90,6 @@
 | **SMS** | Twilio |
 | **Icons** | Lucide React |
 | **PWA** | vite-plugin-pwa, Workbox |
-
 
 ---
 
